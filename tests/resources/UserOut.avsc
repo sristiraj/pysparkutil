@@ -1,0 +1,14 @@
+{"namespace": "example.avro",
+ "type": "record",
+ "name": "User",
+ "fields": [
+     {"name": "name", "type": "string"},
+     {"name": "favorite_number",  "type": "int", "nullable": "True"},
+     {"name": "favorite_color", "type": "string", "nullable": "True"},
+	 {"name": "audit_created_tmstmp", "type": "long","logicalType" : "timestamp-micros", "nullable": "True"},
+	 {"name": "audit_updated_tmstmp", "type": "long","logicalType" : "timestamp-micros", "nullable": "True"},
+	 {"name": "audit_created_by", "type": "string", "nullable": "True"},
+	 {"name": "audit_updated_by", "type": "string", "nullable": "True"},
+	 {"name": "audit_data_source", "type": "string", "nullable": "True"}
+ ]
+}

@@ -126,9 +126,15 @@ class Schema(object):
         rowList=df.select(explode(col("fields"))).collect()
         fieldList=[]
         for i in rowList:
-            field_name=i[0][0]
-            is_null=bool(i[0][1])
-            dtype=i[0][2]
+            field_name=i[0].name
+            is_null=bool(i[0].nullable)
+            dtype=i[0].type
+            try:
+              if (i[0].logicalType.startswith("timestamp")):
+                print(i[0].logicalType)
+                dtype="timestamp"
+            except:
+              pass
             structFields=self.create_schema(field_name,dtype,is_null)
             fieldList.append(structFields)
         schema = StructType(fieldList)
