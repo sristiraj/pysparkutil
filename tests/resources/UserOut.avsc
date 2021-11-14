@@ -9,6 +9,7 @@
 	 {"name": "audit_updated_tmstmp", "type": "long","logicalType" : "timestamp-micros", "nullable": "True"},
 	 {"name": "audit_created_by", "type": "string", "nullable": "True"},
 	 {"name": "audit_updated_by", "type": "string", "nullable": "True"},
-	 {"name": "audit_data_source", "type": "string", "nullable": "True"}
+	 {"name": "audit_data_source", "type": "string", "nullable": "True"},
+	 {"name": "partition_load_dt_tmstmp", "type": "string", "nullable": "True"}
  ]
 }
