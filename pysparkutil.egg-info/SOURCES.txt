@@ -8,3 +8,5 @@ pysparkutil.egg-info/requires.txt
 pysparkutil.egg-info/top_level.txt
 pysparkutil/common/__init__.py
 pysparkutil/common/schema.py
+pysparkutil/util/__init__.py
+pysparkutil/util/raw_util.py
