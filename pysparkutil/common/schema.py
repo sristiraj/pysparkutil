@@ -49,7 +49,7 @@ class Schema(object):
     def _schema_data(self):
         location_type = self._schema_uri_type()
         if location_type == "local":
-            with open(self.location, "rb") as f:
+            with open(self.location.replace("file://",""), "rb") as f:
                 data = f.read()
         elif location_type == "s3":
             s3 = boto3.client("s3")
@@ -140,3 +140,18 @@ class Schema(object):
         schema = StructType(fieldList)
         return schema    
 
+    def get_spark_schema(self):
+        json_data=self.parse_schema()
+        tmp = "/tmp/avro_schema/tmp.avro"
+        spark = SparkSession.builder.appName("schema").getOrCreate()
+        with open(tmp, "wb") as fw:
+          writer = DataFileWriter(fw, DatumWriter(), schema)
+          writer.close()
+        df = spark.read.format('avro').load("/tmp/avro_schema/tmp.avro")  
+        return df.schema  
+
+if __name__=="__main__":
+  sch = Schema()
+  sch.set_location("file://C:\\Users\\RAJSR1\\Downloads\\pyspark_util\\tests\\resources\\sample.avsc")
+  print(sch.get_schema())
+  

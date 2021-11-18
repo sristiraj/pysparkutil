@@ -1,0 +1,94 @@
+{
+  "name": "MyClass",
+  "type": "record",
+  "namespace": "com.acme.avro",
+  "fields": [
+    {
+      "name": "header",
+      "type": {
+        "name": "header",
+        "type": "record",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "well",
+            "type": "string"
+          },
+          {
+            "name": "field",
+            "type": "string"
+          },
+          {
+            "name": "date",
+            "type": "string"
+          },
+          {
+            "name": "operator",
+            "type": "string"
+          },
+          {
+            "name": "startIndex",
+            "type": "float"
+          },
+          {
+            "name": "endIndex",
+            "type": "float"
+          },
+          {
+            "name": "step",
+            "type": "float"
+          }
+        ]
+      }
+    },
+    {
+      "name": "curves",
+      "type": {
+        "type": "array",
+        "items": {
+          "name": "curves_record",
+          "type": "record",
+          "fields": [
+            {
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "name": "description",
+              "type": "string"
+            },
+            {
+              "name": "quantity",
+              "type": "string"
+            },
+            {
+              "name": "unit",
+              "type": "string"
+            },
+            {
+              "name": "valueType",
+              "type": "string"
+            },
+            {
+              "name": "dimensions",
+              "type": "int"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "data",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": "float"
+        }
+      }
+    }
+  ]
+}
